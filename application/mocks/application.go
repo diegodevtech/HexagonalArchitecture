@@ -278,18 +278,18 @@ func (m *MockProductWriter) EXPECT() *MockProductWriterMockRecorder {
 }
 
 // Save mocks base method.
-func (m *MockProductWriter) Save(name string, price float64) (application.ProductInterface, error) {
+func (m *MockProductWriter) Save(product application.ProductInterface) (application.ProductInterface, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Save", name, price)
+	ret := m.ctrl.Call(m, "Save", product)
 	ret0, _ := ret[0].(application.ProductInterface)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Save indicates an expected call of Save.
-func (mr *MockProductWriterMockRecorder) Save(name, price interface{}) *gomock.Call {
+func (mr *MockProductWriterMockRecorder) Save(product interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductWriter)(nil).Save), name, price)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductWriter)(nil).Save), product)
 }
 
 // MockProductPersistenceInterface is a mock of ProductPersistenceInterface interface.
@@ -331,16 +331,16 @@ func (mr *MockProductPersistenceInterfaceMockRecorder) Get(id interface{}) *gomo
 }
 
 // Save mocks base method.
-func (m *MockProductPersistenceInterface) Save(name string, price float64) (application.ProductInterface, error) {
+func (m *MockProductPersistenceInterface) Save(product application.ProductInterface) (application.ProductInterface, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Save", name, price)
+	ret := m.ctrl.Call(m, "Save", product)
 	ret0, _ := ret[0].(application.ProductInterface)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Save indicates an expected call of Save.
-func (mr *MockProductPersistenceInterfaceMockRecorder) Save(name, price interface{}) *gomock.Call {
+func (mr *MockProductPersistenceInterfaceMockRecorder) Save(product interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductPersistenceInterface)(nil).Save), name, price)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductPersistenceInterface)(nil).Save), product)
 }

@@ -6,6 +6,11 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+const (
+	ENABLED  = "enabled"
+	DISABLED = "disabled"
+)
+
 type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
@@ -28,18 +33,13 @@ type ProductReader interface {
 }
 
 type ProductWriter interface {
-	Save(name string, price float64) (ProductInterface, error)
+	Save(product ProductInterface) (ProductInterface, error)
 }
 
 type ProductPersistenceInterface interface {
 	ProductReader
 	ProductWriter
 }
-
-const (
-	ENABLED  = "enabled"
-	DISABLED = "disabled"
-)
 
 type Product struct {
 	ID     string  `valid:"uuidv4"`
