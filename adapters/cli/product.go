@@ -6,12 +6,12 @@ import (
 	"github.com/diegodevtech/hexagonal-architecture/application"
 )
 
-func Run(service application.ProductServiceInterface, action string, productId string, prodctName string, price float64) (string, error) {
+func Run(service application.ProductServiceInterface, action string, productId string, productName string, price float64) (string, error) {
 	var result = ""
 
 	switch action {
 	case "create":
-		product, err := service.Create(prodctName, price)
+		product, err := service.Create(productName, price)
 		if err != nil {
 			return result, err
 		}
@@ -45,7 +45,7 @@ func Run(service application.ProductServiceInterface, action string, productId s
 		if err != nil {
 			return result, err
 		}
-		fmt.Sprintf("Product ID: %s\nName: %s\nPrice: %f\nStatus: %s", product.GetID(), product.GetName(), product.GetPrice(), product.GetStatus())
+		result = fmt.Sprintf("Product ID: %s\nName: %s\nPrice: %f\nStatus: %s", product.GetID(), product.GetName(), product.GetPrice(), product.GetStatus())
 	}
 	return result, nil
 }
