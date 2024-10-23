@@ -6,9 +6,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/diegodevtech/hexagonal-architecture/adapters/web/handler"
 	"github.com/diegodevtech/hexagonal-architecture/application"
-	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
+	"github.com/urfave/negroni"
 )
 
 type Webserver struct {
@@ -25,6 +26,9 @@ func (w Webserver) Serve() {
 	n := negroni.New(
 		negroni.NewLogger(),
 	) //middleware de log
+
+	handler.MakeProductHandlers(r, n, w.Service)
+	http.Handle("/", r)
 
 
 	server := &http.Server{
