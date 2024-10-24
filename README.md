@@ -28,8 +28,46 @@ This project contains a core application and the following adapters:
 - Web Server
 - Databse (Sqlite3)
 
-You can meke some GET requests using the CLI
+### You can meke some requests using the CLI
 
+##### Getting all products: 
 ```
-go run main.go cli
+go run main.go cli -a=all
+```
+
+##### Getting product by ID: 
+```
+go run main.go cli -a=get -i={id}
+```
+
+##### Creating product: 
+```
+go run main.go cli -a=create -n="{Product'a Name}" -p={some float64 value}
+```
+
+### You can also start using the Webserver running:
+```
+go run main.go http
+```
+##### OBS.: Choose the HTTP CLient of  your preference ant start making requests, such as:
+##### Getting all products: 
+```
+  http://localhost:9000/product
+```
+##### Getting product by Id: 
+```
+  GET - http://localhost:9000/product/{productId}
+```
+##### Getting all products: 
+```
+  GET - http://localhost:9000/product
+```
+##### Creating a product: 
+```
+  POST - http://localhost:9000/product
+  BODY:
+  {
+    "name": "ThunderClient Product",
+    "price": "100.15"
+  }
 ```
