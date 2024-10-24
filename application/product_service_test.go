@@ -9,6 +9,25 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestProductService_GetAll(t *testing.T){
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	product1 := mock_application.NewMockProductInterface(ctrl)
+	product2 := mock_application.NewMockProductInterface(ctrl)
+	persistence := mock_application.NewMockProductPersistenceInterface(ctrl)
+
+	persistence.EXPECT().GetAll().Return([]application.ProductInterface{product1, product2}, nil).AnyTimes()
+
+	service := application.ProductService{
+		Persistence: persistence,
+	}
+
+	result, err := service.GetAll()
+	require.Nil(t, err)
+	require.Equal(t, []application.ProductInterface{product1, product1}, result)
+}
+
 func TestProductService_Get(t *testing.T){
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
